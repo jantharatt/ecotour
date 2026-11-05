@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/livewire/src/Features/SupportPagination/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/*
+ * โทนสี "ป่า-น้ำ-ตะวัน" : สบายตา สดใส
+ *  leaf   = เขียวใบไม้ (สีหลัก / ความยั่งยืน)
+ *  lagoon = ฟ้าน้ำทะเลสาบ (สีรอง / ความสดชื่น)
+ *  sun    = ส้มตะวัน (เน้นปุ่มซื้อ-จอง / ความอบอุ่น)
+ *  cream  = พื้นหลังครีมนวล ลดแสงจ้าจากพื้นขาวล้วน
+ */
+@theme {
+    --font-sans: 'Sarabun', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Prompt', 'Sarabun', ui-sans-serif, sans-serif;
+
+    --color-leaf-50: #eef8f1;
+    --color-leaf-100: #d7efdf;
+    --color-leaf-200: #b0dfc1;
+    --color-leaf-300: #7fc99c;
+    --color-leaf-400: #4fb078;
+    --color-leaf-500: #2f9660;
+    --color-leaf-600: #22794d;
+    --color-leaf-700: #1d6040;
+    --color-leaf-800: #1a4d35;
+    --color-leaf-900: #163f2d;
+
+    --color-lagoon-50: #ecf8fb;
+    --color-lagoon-100: #d2eef5;
+    --color-lagoon-200: #a9dfec;
+    --color-lagoon-300: #7fcfe3;
+    --color-lagoon-400: #4dbbd6;
+    --color-lagoon-500: #2aa5c4;
+    --color-lagoon-600: #1e86a3;
+    --color-lagoon-700: #1c6b83;
+
+    --color-sun-50: #fff6ea;
+    --color-sun-100: #ffe9cc;
+    --color-sun-200: #ffd6a3;
+    --color-sun-300: #ffc27a;
+    --color-sun-400: #fba94c;
+    --color-sun-500: #f28c28;
+    --color-sun-600: #d9701a;
+    --color-sun-700: #b4561a;
+
+    --color-cream: #fbf8f1;
+    --color-sand: #f3ede0;
+    --color-ink: #23362f;
+    --color-muted: #5f736b;
+
+    --radius-card: 1.25rem;
+    --shadow-soft: 0 6px 24px -8px rgb(35 54 47 / 0.12);
+}
+
+@layer base {
+    body {
+        @apply bg-cream text-ink font-sans antialiased;
+    }
+    h1, h2, h3, h4 {
+        @apply font-display text-ink;
+    }
+}
+
+/* ---------- แผนที่ (Leaflet) ---------- */
+@layer components {
+    .map-pin {
+        width: 38px; height: 38px; display: grid; place-items: center;
+        background: var(--pin); border: 3px solid #fff; border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg); box-shadow: 0 4px 10px rgb(0 0 0 / .25);
+    }
+    .map-pin span { transform: rotate(45deg); font-size: 17px; line-height: 1; }
+    .leaflet-popup-content-wrapper { border-radius: 1rem; }
+    .leaflet-container { font-family: var(--font-sans); z-index: 0; }
+    .map-popup { min-width: 180px; }
+    .map-popup-title { font-family: var(--font-display); font-weight: 600; font-size: 15px; margin: 0; color: var(--color-ink); }
+    .map-popup-meta { margin: 2px 0 0; font-size: 12px; color: var(--color-muted); }
+    .map-popup-dist { margin: 4px 0 0; font-size: 12px; color: var(--color-lagoon-700); font-weight: 600; }
+    .map-popup-actions { display: flex; gap: 8px; margin-top: 8px; }
+    .map-popup-actions a {
+        flex: 1; text-align: center; border-radius: 999px; padding: 5px 10px; font-size: 12px; font-weight: 600;
+        background: var(--color-leaf-50); color: var(--color-leaf-700) !important; text-decoration: none;
+    }
+    .map-popup-actions a + a { background: var(--color-sun-500); color: #fff !important; }
+}
+
+/* คอมโพเนนต์ที่ใช้ซ้ำ (Tailwind v4 ใช้ @utility เพื่อให้ @apply ต่อกันได้) */
+@utility container-page { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
+
+@utility btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-50; }
+@utility btn-primary { @apply btn bg-leaf-500 text-white hover:bg-leaf-600 focus-visible:ring-leaf-200; }
+@utility btn-accent  { @apply btn bg-sun-500 text-white hover:bg-sun-600 focus-visible:ring-sun-200; }
+@utility btn-soft    { @apply btn bg-leaf-50 text-leaf-700 hover:bg-leaf-100 focus-visible:ring-leaf-200; }
+@utility btn-outline { @apply btn border border-leaf-300 text-leaf-700 hover:bg-leaf-50; }
+@utility btn-sm      { @apply px-3 py-1.5 text-xs; }
+
+@utility card { @apply rounded-card bg-white shadow-soft ring-1 ring-black/5; }
+
+@utility label { @apply mb-1 block text-sm font-medium text-ink; }
+@utility input { @apply w-full rounded-xl border border-sand bg-white px-4 py-2.5 text-sm text-ink placeholder:text-muted/60 focus:border-leaf-400 focus:ring-4 focus:ring-leaf-100 focus:outline-none; }
+@utility error { @apply mt-1 text-xs text-red-600; }
+
+@utility badge { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium; }
+@utility badge-leaf   { @apply badge bg-leaf-100 text-leaf-700; }
+@utility badge-lagoon { @apply badge bg-lagoon-100 text-lagoon-700; }
+@utility badge-sun    { @apply badge bg-sun-100 text-sun-700; }
+@utility badge-gray   { @apply badge bg-sand text-muted; }
+@utility badge-red    { @apply badge bg-red-100 text-red-700; }
+
+@utility section-title { @apply text-2xl font-semibold sm:text-3xl; }
+@utility price { @apply font-display font-semibold text-sun-600; }
+
+@utility table-admin {
+    @apply w-full text-left text-sm;
+    & th { @apply bg-leaf-50 px-4 py-3 font-medium text-leaf-800; }
+    & td { @apply border-t border-sand px-4 py-3 align-middle; }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <defs>
+    <linearGradient id="paper" x1="100" y1="20" x2="700" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6E7"/>
+      <stop offset="1" stop-color="#E9D4AE"/>
+    </linearGradient>
+    <linearGradient id="basket" x1="220" y1="330" x2="580" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8A35C"/>
+      <stop offset="1" stop-color="#A96838"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h800v800H0z"/>
+  <circle cx="626" cy="162" r="74" fill="#F3BE67" opacity=".7"/>
+  <path d="M0 605c123-73 244-58 367-21 143 43 272 33 433-36v252H0V605Z" fill="#D6E4CE"/>
+  <path d="M228 345h344l-39 322H267l-39-322Z" fill="url(#basket)" stroke="#885B37" stroke-width="12"/>
+  <path d="M258 356c12-114 60-173 142-173s130 59 142 173" stroke="#98613B" stroke-width="22"/>
+  <path d="M253 420h294M260 487h280M267 554h266M274 621h252" stroke="#F0CB8F" stroke-width="13" opacity=".85"/>
+  <path d="M297 359v304m56-313v322m58-322v322m58-322v322m55-322v313" stroke="#F0CB8F" stroke-width="11" opacity=".72"/>
+  <path d="M151 672h498" stroke="#5C8061" stroke-linecap="round" stroke-width="16"/>
+</svg>

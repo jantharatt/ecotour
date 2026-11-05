@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" fill="none">
+  <rect width="360" height="360" rx="32" fill="#F4FAF8"/>
+  <rect x="25" y="25" width="310" height="310" rx="24" fill="white" stroke="#D7EFDF" stroke-width="3"/>
+  <g stroke="#22794D" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
+    <path d="M75 143V77h66v66H75Zm18-18v-30h30v30H93Zm131 18V77h66v66h-66Zm18-18v-30h30v30h-30ZM75 284v-66h66v66H75Zm18-18v-30h30v30H93Z"/>
+    <path d="M180 87h20m-20 27h25m-25 28v21m29-21v32m-54 21h22m32-20h19m30 7v24m-76 25h23m29 0h38m-38 28v19m-41-22v22m-46-46h17"/>
+  </g>
+  <rect x="75" y="300" width="210" height="35" rx="17.5" fill="#1A4D35"/>
+  <text x="180" y="323" fill="white" font-family="sans-serif" font-size="15" font-weight="600" text-anchor="middle">วาง QR พร้อมเพย์จริงที่นี่</text>
+</svg>
